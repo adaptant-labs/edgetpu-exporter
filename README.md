@@ -43,9 +43,9 @@ Viewed from the exporter:
 # HELP edgetpu_num_devices Number of EdgeTPU devices
 # TYPE edgetpu_num_devices gauge
 edgetpu_num_devices 1
-# HELP edgetpu_temperature EdgeTPU device temperature in Celsius
-# TYPE edgetpu_temperature gauge
-edgetpu_temperature{name="apex_0"} 49.3
+# HELP edgetpu_temperature_celsius EdgeTPU device temperature in Celsius
+# TYPE edgetpu_temperature_celsius gauge
+edgetpu_temperature_celsius{name="apex_0"} 49.3
 ```
 
 ## Docker Images
