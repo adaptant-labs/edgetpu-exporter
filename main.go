@@ -37,7 +37,7 @@ func NewEdgeTPUCollector() *EdgeTPUCollector {
 		temperature: prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
-				Name: "temperature",
+				Name: "temperature_celsius",
 				Help: "EdgeTPU device temperature in Celsius",
 			},
 			labels,

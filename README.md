@@ -15,7 +15,7 @@ $ go get github.com/adaptant-labs/edgetpu-exporter
 `edgetpu-exporter` can be run as-is without any additional configuration.
 
 ```
-$ ./edgetpu-exporter --help
+$ edgetpu-exporter --help
 EdgeTPU Prometheus Exporter
 Usage: edgetpu-exporter [flags]
 
@@ -32,7 +32,7 @@ The following metrics are exported:
 | Metric | Description |
 |--------|-------------|
 | edgetpu_num_devices | Number of EdgeTPU devices |
-| edgetpu_temperature | EdgeTPU device temperature in Celsius (per device) |
+| edgetpu_temperature_celsius | EdgeTPU device temperature in Celsius (per device) |
 
 Note that not all Apex device types will support temperature checks, there is presently no mechanism by which to obtain
 a temperature reading from USB-attached devices.
