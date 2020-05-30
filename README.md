@@ -1,5 +1,7 @@
 # EdgeTPU Prometheus Exporter
 
+[![Build Status](https://travis-ci.com/adaptant-labs/edgetpu-exporter.svg?branch=master)](https://travis-ci.com/adaptant-labs/edgetpu-exporter#)
+
 This is a Prometheus Exporter for EdgeTPU metrics.
 
 ## Building and Installing
