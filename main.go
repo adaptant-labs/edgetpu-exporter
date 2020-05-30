@@ -21,7 +21,7 @@ var (
 
 type EdgeTPUCollector struct {
 	sync.Mutex
-	numDevices prometheus.Gauge
+	numDevices  prometheus.Gauge
 	temperature *prometheus.GaugeVec
 }
 
@@ -30,15 +30,15 @@ func NewEdgeTPUCollector() *EdgeTPUCollector {
 		numDevices: prometheus.NewGauge(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
-				Name: "num_devices",
-				Help: "Number of EdgeTPU devices",
+				Name:      "num_devices",
+				Help:      "Number of EdgeTPU devices",
 			},
 		),
 		temperature: prometheus.NewGaugeVec(
 			prometheus.GaugeOpts{
 				Namespace: namespace,
-				Name: "temperature_celsius",
-				Help: "EdgeTPU device temperature in Celsius",
+				Name:      "temperature_celsius",
+				Help:      "EdgeTPU device temperature in Celsius",
 			},
 			labels,
 		),
