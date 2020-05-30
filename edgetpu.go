@@ -16,7 +16,7 @@ func FindEdgeTPUDevices() []EdgeTPUDevice {
 	devices := make([]EdgeTPUDevice, 0)
 
 	// Attempt to lookup Apex devices by device class
-	files, err := filepath.Glob("/sys/class/apex/apex_*")
+	files, err := filepath.Glob(sysfsRoot + "/class/apex/apex_*")
 	if err != nil {
 		return devices
 	}

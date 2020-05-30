@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: edgetpu-exporter
+spec:
+  selector:
+    matchLabels:
+      name: edgetpu-exporter
+  template:
+    metadata:
+      labels:
+        name: edgetpu-exporter
+    spec:
+      containers:
+        - name: edgetpu-exporter
+          image: adaptant/edgetpu-exporter:latest
+          args:
+            - "-sysfs=/host-sys"
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /host-sys
+              name: sysfs
+              readOnly: true
+      volumes:
+        - name: sysfs
+          hostPath:
+            path: /sys
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  # EdgeTPU Device Plugin
+                  - key: kkohtaka.org/edgetpu
+                    operator: Exists
+                  # USB-attached Coral AI Accelerator (using NFD discovery)
+                  - key: feature.node.kubernetes.io/usb-fe_1a6e_089a.present
+                    operator: In
+                    values:
+                      - "true"
+                  # PCIe-attached Coral AI Accelerator (using NFD discovery)
+                  - key: feature.node.kubernetes.io/pci-0880_1ac1.present
+                    operator: In
+                    values:
+                      - "true"
+                  # Coral Dev Board (using DT labelling)
+                  - key: beta.devicetree.org/fsl-imx8mq-phanbell
+                    operator: In
+                    values:
+                      - "1"

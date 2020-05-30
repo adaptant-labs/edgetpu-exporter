@@ -23,6 +23,8 @@ Usage: edgetpu-exporter [flags]
 
   -port int
     	Port to listen to (default 8080)
+  -sysfs string
+    	Mountpoint of sysfs instance to scan (default "/sys")
 ```
 
 By default, it will listen on port `8080`, but this can be changed via the `-port` argument.
@@ -54,6 +56,24 @@ edgetpu_temperature_celsius{name="apex_0"} 49.3
 
 Multi-arch Docker images are available on Docker Hub at [adaptant/edgetpu-exporter].
 
+## Deployment via Kubernetes
+
+`edgetpu-exporter` can be installed directly as a `DaemonSet` on matching nodes:
+
+```
+$ kubectl apply -f https://raw.githubusercontent.com/adaptant-labs/edgetpu-exporter/edgetpu-daemonset.yaml
+```
+ 
+The node selection criteria depends on the existence of node labels designating the existence of an EdgeTPU within the
+node. The list of node labels and their respective labelling sources are listed below:
+
+| Node Label | Labelling Source | Supported Devices |
+|------------|------------------|-------------------|
+| kkohtaka.org/edgetpu | [EdgeTPU Device Plugin][edgetpu-device-plugin] | USB |
+| feature.node.kubernetes.io/usb-fe_1a6e_089a.present | [node-feature-discovery] | USB |
+| feature.node.kubernetes.io/pci-0880_1ac1.present | [node-feature-discovery] | PCIe, Coral Dev Board |
+| beta.devicetree.org/fsl-imx8mq-phanbell | [k8s-dt-node-labeller] | Coral Dev Board |
+
 ## Features and bugs
 
 Please file feature requests and bugs in the [issue tracker][tracker].
@@ -65,3 +85,6 @@ version of which can be found in the LICENSE file included in the distribution.
 
 [tracker]: https://github.com/adaptant-labs/edgetpu-exporter/issues
 [adaptant/edgetpu-exporter]: https://hub.docker.com/repository/docker/adaptant/edgetpu-exporter
+[k8s-dt-node-labeller]: https://github.com/adaptant-labs/k8s-dt-node-labeller
+[node-feature-discovery]: https://github.com/kubernetes-sigs/node-feature/discovery
+[edgetpu-device-plugin]: https://github.com/kkohtaka/edgetpu-device-plugin

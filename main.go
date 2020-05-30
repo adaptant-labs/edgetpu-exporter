@@ -17,6 +17,7 @@ const (
 
 var (
 	labels = []string{"name"}
+	sysfsRoot = "/sys"
 )
 
 type EdgeTPUCollector struct {
@@ -78,6 +79,7 @@ func main() {
 	var port int
 
 	flag.IntVar(&port, "port", 8080, "Port to listen to")
+	flag.StringVar(&sysfsRoot, "sysfs", "/sys", "Mountpoint of sysfs instance to scan")
 
 	flag.Usage = func() {
 		fmt.Fprintf(os.Stderr, "EdgeTPU Prometheus Exporter\n")
