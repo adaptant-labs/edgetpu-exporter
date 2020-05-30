@@ -67,7 +67,7 @@ func (c *EdgeTPUCollector) Collect(ch chan<- prometheus.Metric) {
 		temp := device.Temperature()
 		// Temperature reading is not supported on all devices, skip the ones we don't know anything about
 		if temp > 0.0 {
-			c.temperature.WithLabelValues(devices[i].name).Set(temp)
+			c.temperature.WithLabelValues(device.name).Set(temp)
 		}
 	}
 
