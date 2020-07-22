@@ -34,16 +34,19 @@ spec:
                   # EdgeTPU Device Plugin
                   - key: kkohtaka.org/edgetpu
                     operator: Exists
+              - matchExpressions:
                   # USB-attached Coral AI Accelerator (using NFD discovery)
                   - key: feature.node.kubernetes.io/usb-fe_1a6e_089a.present
                     operator: In
                     values:
                       - "true"
+              - matchExpressions:
                   # PCIe-attached Coral AI Accelerator (using NFD discovery)
                   - key: feature.node.kubernetes.io/pci-0880_1ac1.present
                     operator: In
                     values:
                       - "true"
+              - matchExpressions:
                   # Coral Dev Board (using DT labelling)
                   - key: beta.devicetree.org/fsl-imx8mq-phanbell
                     operator: In
