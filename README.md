@@ -78,6 +78,11 @@ node. The list of node labels and their respective labelling sources are listed 
 
 Please file feature requests and bugs in the [issue tracker][tracker].
 
+## Acknowledgements
+
+This project has received funding from the European Union’s Horizon 2020 research and innovation programme under grant
+agreement No 825480 ([SODALITE]).
+
 ## License
 
 `edgetpu-exporter` is licensed under the terms of the Apache 2.0 license, the full
