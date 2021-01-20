@@ -1,6 +1,7 @@
 # EdgeTPU Prometheus Exporter
 
 [![Build Status](https://travis-ci.com/adaptant-labs/edgetpu-exporter.svg?branch=master)](https://travis-ci.com/adaptant-labs/edgetpu-exporter#)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=adaptant-labs_edgetpu-exporter&metric=alert_status)](https://sonarcloud.io/dashboard?id=adaptant-labs_edgetpu-exporter)
 
 This is a Prometheus Exporter for EdgeTPU metrics.
 
@@ -93,3 +94,4 @@ version of which can be found in the LICENSE file included in the distribution.
 [k8s-dt-node-labeller]: https://github.com/adaptant-labs/k8s-dt-node-labeller
 [node-feature-discovery]: https://github.com/kubernetes-sigs/node-feature/discovery
 [edgetpu-device-plugin]: https://github.com/kkohtaka/edgetpu-device-plugin
+[SODALITE]: https://sodalite.eu
